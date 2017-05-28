@@ -1,0 +1,27 @@
+{
+    "variantCappToolApp": {
+        "part" : {
+            "home": {
+                "title": "Parts",
+                "createLabel": "Create a new Part",
+                "createOrEditLabel": "Create or edit a Part"
+            },
+            "created": "A new Part is created with identifier {{ param }}",
+            "updated": "A Part is updated with identifier {{ param }}",
+            "deleted": "A Part is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Part {{ id }}?"
+            },
+            "detail": {
+                "title": "Part"
+            },
+            "partName": "Part Name",
+            "partLengthDimension": "Part Length Dimension",
+            "partHeightWidthDiameter": "Part Height Width Diameter",
+            "ratioLD": "Ratio LD",
+            "noOfHoles": "No Of Holes",
+            "mass": "Mass",
+            "partCode": "Part Code"
+        }
+    }
+}

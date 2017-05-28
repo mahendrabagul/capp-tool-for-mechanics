@@ -1,0 +1,18 @@
+entity Part {
+	partName String,
+    partLengthDimension Double,
+    partHeightWidthDiameter Double,
+    ratioLD Double,
+    noOfHoles Integer,
+    mass Integer,
+	partCode String,
+}
+
+
+// Set pagination options
+paginate Part with pagination
+
+
+
+// Set service options to all except few
+service all with serviceImpl 

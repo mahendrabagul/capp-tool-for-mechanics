@@ -1,0 +1,14 @@
+version: '2'
+services:
+    variant_capp_tool-app:
+        image: variant_capp_tool
+        environment:
+            - SPRING_PROFILES_ACTIVE=prod,swagger
+            - SPRING_DATASOURCE_URL=jdbc:mysql://variant_capp_tool-mysql:3306/variant_capp_tool?useUnicode=true&characterEncoding=utf8&useSSL=false
+            - JHIPSTER_SLEEP=10 # gives time for the database to boot before the application
+        ports:
+            - 8080:8080
+    variant_capp_tool-mysql:
+        extends:
+            file: mysql.yml
+            service: variant_capp_tool-mysql

@@ -1,0 +1,39 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "partName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "partLengthDimension",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "partHeightWidthDiameter",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "ratioLD",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "noOfHoles",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "mass",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "partCode",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20170527153530",
+    "entityTableName": "part",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl"
+}

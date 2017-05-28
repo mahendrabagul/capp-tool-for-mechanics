@@ -1,0 +1,80 @@
+
+<div *ngIf="part">
+	<h2>
+		<span jhiTranslate="variantCappToolApp.part.detail.title">Part</span>
+		{{part.id}}
+	</h2>
+	<hr>
+	<jhi-alert-error></jhi-alert-error>
+	<dl class="row-md jh-entity-details">
+		<dt>
+			<span jhiTranslate="variantCappToolApp.part.partName">Part
+				Name</span>
+		</dt>
+		<dd>
+			<span>{{part.partName}}</span>
+		</dd>
+		<dt>
+			<span jhiTranslate="variantCappToolApp.part.partLengthDimension">Part
+				Length Dimension</span>
+		</dt>
+		<dd>
+			<span>{{part.partLengthDimension}}</span>
+		</dd>
+		<dt>
+			<span jhiTranslate="variantCappToolApp.part.partHeightWidthDiameter">Part
+				Height Width Diameter</span>
+		</dt>
+		<dd>
+			<span>{{part.partHeightWidthDiameter}}</span>
+		</dd>
+		<dt>
+			<span jhiTranslate="variantCappToolApp.part.ratioLD">Ratio LD</span>
+		</dt>
+		<dd>
+			<span>{{part.ratioLD}}</span>
+		</dd>
+		<dt>
+			<span jhiTranslate="variantCappToolApp.part.noOfHoles">No Of
+				Holes</span>
+		</dt>
+		<dd>
+			<span>{{part.noOfHoles}}</span>
+		</dd>
+		<dt>
+			<span jhiTranslate="variantCappToolApp.part.mass">Mass</span>
+		</dt>
+		<dd>
+			<span>{{part.mass}}</span>
+		</dd>
+		<dt>
+			<span jhiTranslate="variantCappToolApp.part.partCode">Part
+				Code</span>
+		</dt>
+		<dd>
+			<span>{{part.partCode}}</span>
+		</dd>
+
+		<dt>
+			<span>Download Part Document</span>
+		</dt>
+		<dd>
+			<button type="submit" (click)="downloadPartAttachment(part.partName)"
+				class="btn btn-info">
+				<span class="fa fa-download"></span>&nbsp;<span> Click Here</span>
+			</button>
+		</dd>
+	</dl>
+
+	<button type="submit" (click)="previousState()" class="btn btn-info">
+		<span class="fa fa-arrow-left"></span>&nbsp;<span
+			jhiTranslate="entity.action.back"> Back</span>
+	</button>
+
+	<button type="button"
+		[routerLink]="['/', { outlets: { popup: 'part/'+ part.id + '/edit'} }]"
+		replaceUrl="true" class="btn btn-primary">
+		<span class="fa fa-pencil"></span>&nbsp;<span
+			jhiTranslate="entity.action.edit"> Edit</span>
+	</button>
+</div>
