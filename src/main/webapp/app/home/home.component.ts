@@ -30,11 +30,11 @@ export class HomeComponent implements OnInit {
         this.registerAuthenticationSuccess();
         
         this.partCode = {
-		      rotationalExternalShapes: [this.rotationalExternalShapes[1].value],
-	          nonRotationalExternalShapes: [this.nonRotationalExternalShapes[1].value],
-	          steppedOneEndInternalShapes: [this.steppedOneEndInternalShapes[1].value],
-	          steppedBothEndInternalShapes: [this.steppedBothEndInternalShapes[1].value],
-	          hollowInternalShapes: [this.hollowInternalShapes[1].value]
+    		externalShapes: this.rotationalExternalShapes[0].value,
+    		externalShapeType: this.externalShapeTypes[0].value,
+    		internalShapeType: this.internalShapeTypes[0].value,
+    		dimensionalCharacteristicsType: this.dimensionalCharacteristicsTypes[0].value,
+    		internalShapes: this.steppedOneEndInternalShapes[1].value,
         }
     }
 
@@ -56,53 +56,75 @@ export class HomeComponent implements OnInit {
     
     //
     public partCode: PartCode;
-
-    public rotationalExternalShapes = [
-      { value: 'CIRCULARDISCTYPE', display: 'Circular/Disc Type' },
-      { value: 'CYLINDRICAL', display: 'Cylindrical' },
-      { value: 'RECTANGULAR', display: 'Rectangular' },
-      { value: 'TRIANGULAR', display: 'Triangular' },
-      { value: 'IRREGULAR', display: 'Irregular' },
+    public externalShapeTypes = [
+      { value: 'EXT_SHAPE_ROTATIONAL', display: 'Rotational' },
+      { value: 'EXT_SHAPE_NON_ROTATIONAL', display: 'Non Rotational' }
     ];
     public nonRotationalExternalShapes = [
-	   { value: 'CIRCULARDISCTYPE', display: 'Circular/Disc Type' },
-	   { value: 'CYLINDRICAL', display: 'Cylindrical' },
-	   { value: 'RECTANGULAR', display: 'Rectangular' },
-	   { value: 'TRIANGULAR', display: 'Triangular' },
-	   { value: 'IRREGULAR', display: 'Irregular' },
-	 ];
-    
-    public steppedOneEndInternalShapes = [
-       { value: 'CIRCULARDISCTYPE', display: 'Circular/Disc Type' },
-       { value: 'CYLINDRICAL', display: 'Cylindrical' },
-       { value: 'RECTANGULAR', display: 'Rectangular' },
-       { value: 'IRREGULAR', display: 'Irregular' },
+	  { value: 'EX_NON_ROT_CIRCULAR_DISC_TYPE', display: 'Circular/Disc Type' },
+	  { value: 'EX_NON_ROT_CYLINDRICAL', display: 'Cylindrical' },
+	  { value: 'EX_NON_ROT_RECTANGULAR', display: 'Rectangular' },
+	  { value: 'EX_NON_ROT_TRIANGULAR', display: 'Triangular' },
+	  { value: 'EX_NON_ROT_IRREGULAR', display: 'Irregular' },
+    ];
+    public rotationalExternalShapes = [
+   	  { value: 'EX_ROT_CIRCULAR_DISC_TYPE', display: 'Circular/Disc Type' },
+   	  { value: 'EX_ROT_CYLINDRICAL', display: 'Cylindrical' },
+   	  { value: 'EX_ROT_RECTANGULAR', display: 'Rectangular' },
+   	  { value: 'EX_ROT_TRIANGULAR', display: 'Triangular' },
+   	  { value: 'EX_ROT_IRREGULAR', display: 'Irregular' },
+    ];
+    public internalShapeTypes = [
+      { value: 'INT_SHAPE_STEPPED_ON_ONE_END', display: 'Stepped/Flanged On One End' },
+      { value: 'INT_SHAPE_STEPPED_ON_BOTH_END', display: 'Steeped/Flanged On Both End' },
+      { value: 'INT_SHAPE_HOLLOW', display: 'Hallow' }
+    ];
+	public steppedOneEndInternalShapes = [
+       { value: 'INT_STEP_ONE_CIRCULAR_DISC_TYPE', display: 'Circular/Disc Type' },
+       { value: 'INT_STEP_ONE_CYLINDRICAL', display: 'Cylindrical' },
+       { value: 'INT_STEP_ONE_RECTANGULAR', display: 'Rectangular' },
+       { value: 'INT_STEP_ONE_IRREGULAR', display: 'Irregular' },
      ];
      public steppedBothEndInternalShapes = [
- 	   { value: 'CYLINDRICAL', display: 'Cylindrical' },
- 	   { value: 'RECTANGULAR', display: 'Rectangular' },
- 	   { value: 'IRREGULAR', display: 'Irregular' },
+ 	   { value: 'INT_STEP_BOTH_CYLINDRICAL', display: 'Cylindrical' },
+ 	   { value: 'INT_STEP_BOTH_RECTANGULAR', display: 'Rectangular' },
+ 	   { value: 'INT_STEP_BOTH_IRREGULAR', display: 'Irregular' },
  	 ];
      public hollowInternalShapes = [
- 	   { value: 'CYLINDRICAL', display: 'Cylindrical' },
- 	   { value: 'RECTANGULAR', display: 'Rectangular' },
- 	   { value: 'IRREGULAR', display: 'Irregular' },
+ 	   { value: 'INT_HOL_CYLINDRICAL', display: 'Cylindrical' },
+ 	   { value: 'INT_HOL_RECTANGULAR', display: 'Rectangular' },
+ 	   { value: 'INT_HOL_IRREGULAR', display: 'Irregular' },
  	 ];
-
+     public dimensionalCharacteristicsTypes = [
+ 	   { value: 'DIM_ROTAOTIONAL_PARTS', display: 'Rotational Parts' },
+ 	   { value: 'DIM_STEPPED_ON_BOTH_END', display: 'Stepped/Flanged On Both End' }
+ 	 ];
     save(isValid: boolean, f: PartCode) {
       if (!isValid) return;
+      this.callMe(f);
+    }
+    callMe(f: PartCode){
       console.log(f);
+    }
+    getExternalShapeType() {
+        return this.partCode.externalShapeType;
+    }
+    getInternalShapeType() {
+        return this.partCode.internalShapeType;
     }
 }
 
 export interface PartCode {
-      rotationalDimensionChar?: number;
-      steppedBothEndDimensionChar?: number;
       noOfHoles?: number;
       mass?: number;
-	  rotationalExternalShapes?: string[];
-	  nonRotationalExternalShapes?: string[];
-	  steppedOneEndInternalShapes?: string[];
-	  steppedBothEndInternalShapes?: string[];
-	  hollowInternalShapes?: string[];
+      externalShapeType?: string;
+      externalShapes?: string;
+      internalShapeType?: string;
+      internalShapes?: string;    
+      dimensionalCharacteristicsTypes?: string[];
+      dimensionalCharacteristicsType?: string; 
+	  dimensionalCharacteristic?: number;
+	  // steppedOneEndInternalShapes?: string[];
+	  // steppedBothEndInternalShapes?: string[];
+	  // hollowInternalShapes?: string[];
 }
