@@ -1,26 +1,47 @@
 /* ==========================================================================
 Main page styles
 ========================================================================== */
-
 .hipster {
-    display: inline-block;
-    width: 347px;
-    height: 497px;
-    background: url("../../content/images/hipster.png") no-repeat center top;
-    background-size: contain;
+	display: inline-block;
+	width: 347px;
+	height: 497px;
+	background: url("../../content/images/hipster.jpg") no-repeat center top;
+	background-size: contain;
 }
 
 /* wait autoprefixer update to allow simple generation of high pixel density media query */
-@media
-only screen and (-webkit-min-device-pixel-ratio: 2),
-only screen and (   min--moz-device-pixel-ratio: 2),
-only screen and (     -o-min-device-pixel-ratio: 2/1),
-only screen and (        min-device-pixel-ratio: 2),
-only screen and (                min-resolution: 192dpi),
-only screen and (                min-resolution: 2dppx) {
-    .hipster {
-        background: url("../../content/images/hipster2x.png") no-repeat center top;
-        background-size: contain;
-    }
+@media only screen and (-webkit-min-device-pixel-ratio: 2) , only screen and (
+		min--moz-device-pixel-ratio: 2) , only screen and (
+		-o-min-device-pixel-ratio: 2/1) , only screen and (
+		min-device-pixel-ratio: 2) , only screen and ( min-resolution: 192dpi)
+		, only screen and ( min-resolution: 2dppx) {
+	.hipster {
+		background: url("../../content/images/hipster2x.jpg") no-repeat center
+			top;
+		background-size: contain;
+	}
 }
 
+.searchPartCode {
+	width: auto;
+	height: auto;
+	background-color: #e3ecfc;
+	border: 2px solid darkblue;
+	padding: 5px;
+	color: navy;
+}
+
+.text-center {
+  text-align: center;
+}
+
+fieldset {
+	display: block;
+	margin-left: 2px;
+	margin-right: 2px;
+	padding-top: 0.35em;
+	padding-bottom: 0.625em;
+	padding-left: 0.75em;
+	padding-right: 0.75em;
+	border: 2px groove(internal value);
+}

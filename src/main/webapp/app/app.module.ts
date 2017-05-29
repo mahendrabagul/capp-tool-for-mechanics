@@ -3,7 +3,7 @@ import './vendor.ts';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { Ng2Webstorage } from 'ng2-webstorage';
-
+import { FormsModule } from '@angular/forms';
 import { VariantCappToolSharedModule, UserRouteAccessService } from './shared';
 import { VariantCappToolHomeModule } from './home/home.module';
 import { VariantCappToolAdminModule } from './admin/admin.module';
@@ -33,7 +33,8 @@ import {
         VariantCappToolHomeModule,
         VariantCappToolAdminModule,
         VariantCappToolAccountModule,
-        VariantCappToolEntityModule
+        VariantCappToolEntityModule,
+        FormsModule
     ],
     declarations: [
         JhiMainComponent,

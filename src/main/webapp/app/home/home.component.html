@@ -5,7 +5,6 @@
 	<div class="col-md-9">
 		<h1 class="display-4" jhiTranslate="home.title">Welcome, Variant
 			CAPP Tool!</h1>
-		<p class="lead" jhiTranslate="home.subtitle">This is your homepage</p>
 
 		<div [ngSwitch]="isAuthenticated()">
 			<div class="alert alert-success" *ngSwitchCase="true">
@@ -13,18 +12,15 @@
 					translateValues="{username: '{{account.login}}'}"> You are
 					logged in as user "{{account.login}}". </span>
 			</div>
-
 			<div class="alert alert-warning" *ngSwitchCase="false">
 				<span jhiTranslate="global.messages.info.authenticated.prefix">If
 					you want to </span> <a class="alert-link" (click)="login()"
 					jhiTranslate="global.messages.info.authenticated.link">sign in</a><span
 					jhiTranslate="global.messages.info.authenticated.suffix">,
 					you can try the default accounts:<br />- Administrator
-					(login="admin" and password="admin") <br />- User (login="user"
-					and password="user").
+					(login="admin" and password="admin") <br />- User (login="user" and password="user").
 				</span>
 			</div>
-
 			<div class="alert alert-warning" *ngSwitchCase="false">
 				<span jhiTranslate="global.messages.info.register.noaccount">You
 					don't have an account yet?</span> <a class="alert-link"
@@ -32,7 +28,85 @@
 					jhiTranslate="global.messages.info.register.link">Register a
 					new account</a>
 			</div>
-			<p>Mahendra Bagul</p>
+			<div class="ssearchPartCode" *ngSwitchCase="true">
+				<h1 class="text-center">Search Part Code</h1>
+				<form #f="ngForm" novalidate>
+					<fieldset>
+						<legend>External Shape:</legend>
+						<div class="form-group">
+							<label>Rotational</label> <select name="rotationalExternalShapes"
+								class="form-control" [(ngModel)]="partCode.rotationalExternalShapes">
+								<option
+									*ngFor="let rotationalExternalShape of rotationalExternalShapes"
+									[value]="rotationalExternalShape.value">{{rotationalExternalShape.display}}</option>
+							</select> <label>Non Rotational</label> <select
+								name="nonRotationalExternalShapes" class="form-control"
+								[(ngModel)]="partCode.nonRotationalExternalShapes">
+								<option
+									*ngFor="let nonRotationalExternalShape of nonRotationalExternalShapes"
+									[value]="nonRotationalExternalShape.value">{{nonRotationalExternalShape.display}}</option>
+							</select>
+						</div>
+					</fieldset>
+					<fieldset>
+						<legend>Internal Shape:</legend>
+						<div class="form-group">
+							<label>Stepped/Flanged On One End</label> <select
+								name="steppedOneEndInternalShapes" class="form-control"
+								[(ngModel)]="partCode.steppedOneEndInternalShapes">
+								<option
+									*ngFor="let steppedOneEndInternalShape of steppedOneEndInternalShapes"
+									[value]="steppedOneEndInternalShape.value">{{steppedOneEndInternalShape.display}}</option>
+							</select><label>Steeped/Flanged On Both End</label><select
+								name="steppedBothEndInternalShapes" class="form-control"
+								[(ngModel)]="partCode.steppedBothEndInternalShapes">
+								<option
+									*ngFor="let steppedBothEndInternalShape of steppedBothEndInternalShapes"
+									[value]="steppedBothEndInternalShape.value">{{steppedBothEndInternalShape.display}}</option>
+							</select> <label>Hallow</label> <select name="hollowInternalShapes"
+								class="form-control" [(ngModel)]="partCode.hollowInternalShapes">
+								<option *ngFor="let hollowInternalShape of hollowInternalShapes"
+									[value]="hollowInternalShape.value">{{hollowInternalShape.display}}</option>
+							</select>
+						</div>
+					</fieldset>
+
+					<fieldset>
+						<legend>Dimensional Characteristics:</legend>
+						<div class="form-group">
+							<label>Rotational parts</label> <input type="number"
+								class="form-control" name="rotationalDimensionChar"
+								[(ngModel)]="partCode.rotationalDimensionChar" /> <label>Steeped
+								on both end </label> <input type="number" class="form-control"
+								name="steppedBothEndDimensionChar"
+								[(ngModel)]="partCode.steppedBothEndDimensionChar" />
+						</div>
+					</fieldset>
+					<fieldset>
+						<legend>No.of Holes:</legend>
+						<div class="form-group">
+							<input type="number" class="form-control" name="noOfHoles"
+								[(ngModel)]="partCode.noOfHoles" />
+						</div>
+					</fieldset>
+					<fieldset>
+						<legend>Mass:</legend>
+						<div class="form-group">
+							<input type="number" class="form-control" name="mass"
+								[(ngModel)]="partCode.mass" />
+						</div>
+					</fieldset>
+
+					<button type="submit" (click)="save(f.value, f.valid)"
+						class="btn btn-default">Submit</button>
+				</form>
+				<div style="margin-top: 20px" *ngIf="f">
+					<div>Form details:-</div>
+					<pre>Is form valid?: <br>{{f.valid | json}}</pre>
+					<pre>Is form submitted?: <br>{{f.submitted | json}}</pre>
+					<pre>submitted value: <br>{{f.value | json}}</pre>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
