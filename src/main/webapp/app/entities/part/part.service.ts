@@ -53,7 +53,10 @@ export class PartService {
      	});
     	let options = new RequestOptions({ headers: headers });
         return this.http.post(`${this.resourceUrl}/searchPartCode`, body, options).map((response: Response) => {
-             return response.json();
+            if (response.status!=200) {
+				return 404;
+			}
+            return response.arrayBuffer().byteLength > 0 ? response.json() : {};
         });
     }
     

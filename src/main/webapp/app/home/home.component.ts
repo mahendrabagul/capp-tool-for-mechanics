@@ -132,7 +132,7 @@ export class HomeComponent implements OnInit {
     searchPartCode(isValid: boolean, partCode: PartCode, form: any) {
         if (!isValid) return;
         this.partService.searchPartCode(JSON.stringify(partCode)).subscribe((response) => {
-        	this.partCodeResponse.partName=response.partName;
+            this.partCodeResponse.partName=response.partName;
         	this.partCodeResponse.partCode=response.partCode;
         	form.controls['noOfHoles'].reset();
         	form.controls['mass'].reset();

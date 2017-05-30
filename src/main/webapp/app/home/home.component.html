@@ -150,34 +150,23 @@
 					<div
 						style="text-align: center; margin-top: 18px; border: 2px solid black;"
 						*ngIf="partCodeResponse?.partName">
-						<b>
-							<h2 style="text-align: center;">
-								You have got part code : <a
-									(click)="downloadPartAttachment(partCodeResponse?.partName)">
-									<b>{{partCodeResponse?.partCode}}</b>
-								</a>
-							</h2>
+						<h2 style="text-align: center;">
+							You have got part code : <a
+								(click)="downloadPartAttachment(partCodeResponse?.partName)">
+								<b>{{partCodeResponse?.partCode}}</b>
+							</a>
+						</h2>
 						</b>
 					</div>
 					<div *ngIf="!partCodeResponse?.partName"
+						title="Database does not have entry for this"
 						style="text-align: center; margin-top: 20px; border: 2px solid black;">
-						<h2 style="text-align: center;">You found nothing with the
-							given input</h2>
+						<h2 style="text-align: center;">
+							You have got part code : <b>{{partCodeResponse?.partCode}} </b>
+						</h2>
+						<h4></h4>
 					</div>
-
-					<!-- <button type="submit"
-							(click)="downloadPartAttachment(partCodeResponse?.partName)"
-							class="btn btn-info">
-							<span class="fa fa-download"></span>&nbsp;<span> Click
-								Here</span>
-						</button> -->
 				</form>
-				<!-- <div style="margin-top: 20px" *ngIf="f">
-					<div>Form details:-</div>
-					<pre>Is form valid?: <br>{{f.valid | json}}</pre>
-					<pre>Is form submitted?: <br>{{f.submitted | json}}</pre>
-					<pre>submitted value: <br>{{f.value | json}}</pre>
-				</div> -->
 			</div>
 		</div>
 	</div>

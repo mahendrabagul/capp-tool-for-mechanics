@@ -10,16 +10,16 @@ public class CodingTableConfigation
 	private static Map<String, String> getMap()
 	{
 		map = new HashMap<>();
-		map.put("EX_NON_ROT_CIRCULAR_DISC_TYPE", "5");
-		map.put("EX_NON_ROT_CYLINDRICAL", "6");
-		map.put("EX_NON_ROT_RECTANGULAR", "7");
-		map.put("EX_NON_ROT_TRIANGULAR", "8");
-		map.put("EX_NON_ROT_IRREGULAR", "9");
 		map.put("EX_ROT_CIRCULAR_DISC_TYPE", "0");
 		map.put("EX_ROT_CYLINDRICAL", "1");
 		map.put("EX_ROT_RECTANGULAR", "2");
 		map.put("EX_ROT_TRIANGULAR", "3");
 		map.put("EX_ROT_IRREGULAR", "4");
+		map.put("EX_NON_ROT_CIRCULAR_DISC_TYPE", "5");
+		map.put("EX_NON_ROT_CYLINDRICAL", "6");
+		map.put("EX_NON_ROT_RECTANGULAR", "7");
+		map.put("EX_NON_ROT_TRIANGULAR", "8");
+		map.put("EX_NON_ROT_IRREGULAR", "9");
 		map.put("INT_STEP_ONE_CIRCULAR_DISC_TYPE", "0");
 		map.put("INT_STEP_ONE_CYLINDRICAL", "1");
 		map.put("INT_STEP_ONE_RECTANGULAR", "2");

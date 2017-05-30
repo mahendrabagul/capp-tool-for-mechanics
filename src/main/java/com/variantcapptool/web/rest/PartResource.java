@@ -202,8 +202,17 @@ public class PartResource
 	{
 		log.debug("REST request to save Part : {}", partDTO);
 		String partCode = PartCodeUtil.getPartCode(partDTO);
-		//	partCode = "99923";
+		System.out.println(partCode);
 		Part result = partService.findByPartCode(partCode);
-		return ResponseUtil.wrapOrNotFound(Optional.ofNullable(result));
+		if (result != null)
+		{
+			return new ResponseEntity<Part>(result, HttpStatus.OK);
+		}
+		else
+		{
+			Part resultPartCode = new Part();
+			resultPartCode.setPartCode(partCode);
+			return new ResponseEntity<Part>(resultPartCode, HttpStatus.OK);
+		}
 	}
 }
