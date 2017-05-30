@@ -45,6 +45,18 @@ export class PartService {
              return blob;
         });
     }
+
+    searchPartCode(partCodeData: string): Observable<Part> {
+    	let body = JSON.parse(partCodeData);
+    	let headers = new Headers({ 
+ 		   'Content-Type': 'application/json'
+     	});
+    	let options = new RequestOptions({ headers: headers });
+    	console.log(body);
+        return this.http.post(`${this.resourceUrl}/searchPartCode`, body, options).map((response: Response) => {
+             return response.json();
+        });
+    }
     
     query(req?: any): Observable<ResponseWrapper> {
         const options = createRequestOption(req);

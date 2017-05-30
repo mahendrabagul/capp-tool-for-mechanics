@@ -35,8 +35,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.codahale.metrics.annotation.Timed;
 import com.variantcapptool.common.components.DocsComponent;
+import com.variantcapptool.common.util.PartCodeUtil;
 import com.variantcapptool.domain.Part;
 import com.variantcapptool.service.PartService;
+import com.variantcapptool.service.dto.PartDTO;
 import com.variantcapptool.web.rest.util.HeaderUtil;
 import com.variantcapptool.web.rest.util.PaginationUtil;
 
@@ -192,5 +194,16 @@ public class PartResource
 			//Copy bytes from source to destination(outputstream in this example), closes both streams.
 			FileCopyUtils.copy(inputStream, response.getOutputStream());
 		}
+	}
+
+	@PostMapping("/parts/searchPartCode")
+	@Timed
+	public ResponseEntity<Part> searchPartCode(@RequestBody PartDTO partDTO) throws URISyntaxException
+	{
+		log.debug("REST request to save Part : {}", partDTO);
+		//		String partCode = PartCodeUtil.getPartCode(partDTO);
+		String partCode = "99923";
+		Part result = partService.findByPartCode(partCode);
+		return ResponseUtil.wrapOrNotFound(Optional.ofNullable(result));
 	}
 }

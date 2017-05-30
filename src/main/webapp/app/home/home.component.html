@@ -36,6 +36,7 @@
 						<legend>External Shape:</legend>
 						<div class="radio" *ngFor="let e of externalShapeTypes">
 							<label> <input type="radio" name="externalShapeType"
+								(change)="changeDropDownByShapeType($event.target.value)"
 								[(ngModel)]="partCode.externalShapeType" [value]="e.value">
 								{{e.display}}
 							</label>
@@ -44,16 +45,16 @@
 							<div [ngSwitch]="partCode.externalShapeType">
 								<div *ngSwitchCase="'EXT_SHAPE_ROTATIONAL'">
 									<label style="font-weight: bold;"> Rotational </label> <select
-										name="externalShapes" class="form-control" required
-										[(ngModel)]="partCode.externalShapes">
+										name="externalShape" class="form-control" required
+										[(ngModel)]="partCode.externalShape">
 										<option *ngFor="let e of rotationalExternalShapes"
 											[value]="e.value">{{e.display}}</option>
 									</select>
 								</div>
 								<div *ngSwitchCase="'EXT_SHAPE_NON_ROTATIONAL'">
 									<label style="font-weight: bold;"> Non Rotational </label> <select
-										name="externalShapes" class="form-control" required
-										[(ngModel)]="partCode.externalShapes">
+										name="externalShape" class="form-control" required
+										[(ngModel)]="partCode.externalShape">
 										<option *ngFor="let e of nonRotationalExternalShapes"
 											[value]="e.value">{{e.display}}</option>
 									</select>
@@ -65,6 +66,7 @@
 						<legend>Internal Shape:</legend>
 						<div class="radio" *ngFor="let i of internalShapeTypes">
 							<label> <input type="radio" name="internalShapeType"
+								(change)="changeDropDownByShapeType($event.target.value)"
 								[(ngModel)]="partCode.internalShapeType" [value]="i.value">
 								{{i.display}}
 							</label>
@@ -73,24 +75,24 @@
 							<div [ngSwitch]="partCode.internalShapeType">
 								<div *ngSwitchCase="'INT_SHAPE_STEPPED_ON_ONE_END'">
 									<label style="font-weight: bold;">Stepped/Flanged On
-										One End </label> <select name="internalShapes" class="form-control"
-										required [(ngModel)]="partCode.internalShapes">
+										One End </label> <select name="internalShape" class="form-control"
+										required [(ngModel)]="partCode.internalShape">
 										<option *ngFor="let s of steppedOneEndInternalShapes"
 											[value]="s.value">{{s.display}}</option>
 									</select>
 								</div>
 								<div *ngSwitchCase="'INT_SHAPE_STEPPED_ON_BOTH_END'">
 									<label style="font-weight: bold;">Steeped/Flanged On
-										Both End</label><select name="internalShapes" class="form-control"
-										required [(ngModel)]="partCode.internalShapes">
+										Both End</label><select name="internalShape" class="form-control"
+										required [(ngModel)]="partCode.internalShape">
 										<option *ngFor="let s of steppedBothEndInternalShapes"
 											[value]="s.value">{{s.display}}</option>
 									</select>
 								</div>
 								<div *ngSwitchCase="'INT_SHAPE_HOLLOW'">
 									<label style="font-weight: bold;">Hallow</label> <select
-										required name="internalShapes" class="form-control"
-										[(ngModel)]="partCode.internalShapes">
+										required name="internalShape" class="form-control"
+										[(ngModel)]="partCode.internalShape">
 										<option *ngFor="let h of hollowInternalShapes"
 											[value]="h.value">{{h.display}}</option>
 									</select>
@@ -111,17 +113,16 @@
 						<div class="form-group">
 							<div [ngSwitch]="partCode.dimensionalCharacteristicsType">
 								<div *ngSwitchCase="'DIM_ROTAOTIONAL_PARTS'">
-									<label style="font-weight: bold;">Rotational parts</label> <input
+									<label style="font-weight: bold;">Rotational Parts</label> <input
 										type="number" class="form-control"
-										name="dimensionalCharacteristicsTypes"
-										[(ngModel)]="partCode.dimensionalCharacteristicsTypes"
-										required />
+										name="dimensionalCharacteristic"
+										[(ngModel)]="partCode.dimensionalCharacteristic" required />
 								</div>
 								<div *ngSwitchCase="'DIM_STEPPED_ON_BOTH_END'">
-									<label style="font-weight: bold;">Steeped on both end </label>
-									<input type="number" class="form-control"
-										name="dimensionalCharacteristicsTypes"
-										[(ngModel)]="partCode.dimensionalCharacteristics" />
+									<label style="font-weight: bold;"> Stepped/Flanged On
+										Both End </label> <input type="number" class="form-control"
+										name="dimensionalCharacteristic"
+										[(ngModel)]="partCode.dimensionalCharacteristic" required />
 								</div>
 							</div>
 						</div>
@@ -141,8 +142,13 @@
 						</div>
 					</fieldset>
 
-					<button type="submit" (click)="save(f.value, f.valid)"
-						class="btn btn-default">Submit</button>
+					<button type="submit" (click)="searchPartCode(f.valid, f.value)"
+						class="btn btn-default">Get Part Code</button>
+					<button type="submit"
+						(click)="downloadPartAttachment('Bullcage-02')"
+						class="btn btn-info">
+						<span class="fa fa-download"></span>&nbsp;<span> Click Here</span>
+					</button>
 				</form>
 				<div style="margin-top: 20px" *ngIf="f">
 					<div>Form details:-</div>

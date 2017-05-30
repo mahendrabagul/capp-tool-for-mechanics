@@ -5,12 +5,11 @@ import org.springframework.stereotype.Repository;
 
 import org.springframework.data.jpa.repository.*;
 
-
 /**
  * Spring Data JPA repository for the Part entity.
  */
-@SuppressWarnings("unused")
 @Repository
-public interface PartRepository extends JpaRepository<Part,Long> {
-
+public interface PartRepository extends JpaRepository<Part, Long>
+{
+	Part findByPartCode(String partCode);
 }
