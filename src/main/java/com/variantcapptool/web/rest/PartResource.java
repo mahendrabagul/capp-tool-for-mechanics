@@ -35,7 +35,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.codahale.metrics.annotation.Timed;
 import com.variantcapptool.common.components.DocsComponent;
-import com.variantcapptool.common.util.PartCodeUtil;
 import com.variantcapptool.domain.Part;
 import com.variantcapptool.service.PartService;
 import com.variantcapptool.service.dto.PartDTO;
@@ -200,8 +199,8 @@ public class PartResource
 	@Timed
 	public ResponseEntity<Part> searchPartCode(@RequestBody PartDTO partDTO) throws URISyntaxException
 	{
-		log.debug("REST request to save Part : {}", partDTO);
-		//		String partCode = PartCodeUtil.getPartCode(partDTO);
+		//		log.debug("REST request to save Part : {}", partDTO);
+		//				String partCode = PartCodeUtil.getPartCode(partDTO);
 		String partCode = "99923";
 		Part result = partService.findByPartCode(partCode);
 		return ResponseUtil.wrapOrNotFound(Optional.ofNullable(result));

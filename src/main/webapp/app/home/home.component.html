@@ -141,21 +141,35 @@
 								[(ngModel)]="partCode.mass" required />
 						</div>
 					</fieldset>
-
-					<button type="submit" (click)="searchPartCode(f.valid, f.value)"
-						class="btn btn-default">Get Part Code</button>
-					<button type="submit"
-						(click)="downloadPartAttachment('Bullcage-02')"
-						class="btn btn-info">
-						<span class="fa fa-download"></span>&nbsp;<span> Click Here</span>
-					</button>
+					<div style="text-align: center;">
+						<button type="submit" (click)="searchPartCode(f.valid, f.value)"
+							class="btn btn-info">Get Part Code</button>
+					</div>
+					<br /> <br />
+					<div
+						style="text-align: center; margin-top: 20px; border: 2px solid black;"
+						*ngIf="partCodeResponse?.partName">
+						<b>
+							<h2 style="text-align: center;">
+								You have got part code : <a
+									(click)="downloadPartAttachment(partCodeResponse?.partName)">
+									{{partCodeResponse?.partCode}}</a>
+							</h2>
+						</b>
+						<!-- <button type="submit"
+							(click)="downloadPartAttachment(partCodeResponse?.partName)"
+							class="btn btn-info">
+							<span class="fa fa-download"></span>&nbsp;<span> Click
+								Here</span>
+						</button> -->
+					</div>
 				</form>
-				<div style="margin-top: 20px" *ngIf="f">
+				<!-- <div style="margin-top: 20px" *ngIf="f">
 					<div>Form details:-</div>
 					<pre>Is form valid?: <br>{{f.valid | json}}</pre>
 					<pre>Is form submitted?: <br>{{f.submitted | json}}</pre>
 					<pre>submitted value: <br>{{f.value | json}}</pre>
-				</div>
+				</div> -->
 			</div>
 		</div>
 	</div>

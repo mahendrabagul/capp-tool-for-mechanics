@@ -22,7 +22,7 @@ auto-refreshes when files change on your hard drive.
     ./mvnw
     npm start
 
-[Npm][] is also used to manage CSS and JavaScript dependencies used in this application. You can upgrade dependencies by
+Npm is also used to manage CSS and JavaScript dependencies used in this application. You can upgrade dependencies by
 specifying a newer version in [package.json](package.json). You can also run `npm update` and `npm install` to manage dependencies.
 Add the `help` flag on any command to see how you can use it. For example, `npm help update`.
 

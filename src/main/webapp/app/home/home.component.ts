@@ -30,7 +30,10 @@ export class HomeComponent implements OnInit {
             this.account = account;
         });
         this.registerAuthenticationSuccess();
-        
+        this.partCodeResponse = {
+        	partName:"",
+        	partCode:""
+        };
         this.partCode = {
     		externalShape: this.rotationalExternalShapes[0].value,
     		externalShapeType: this.externalShapeTypes[0].value,
@@ -58,6 +61,7 @@ export class HomeComponent implements OnInit {
     
     //
     public partCode: PartCode;
+    public partCodeResponse: PartCodeResponse;
     public externalShapeTypes = [
       { value: 'EXT_SHAPE_ROTATIONAL', display: 'Rotational' },
       { value: 'EXT_SHAPE_NON_ROTATIONAL', display: 'Non Rotational' }
@@ -127,8 +131,10 @@ export class HomeComponent implements OnInit {
     }
     searchPartCode(isValid: boolean, partCode: PartCode) {
         if (!isValid) return;
-        this.partService.searchPartCode(JSON.stringify(partCode)).subscribe((partCodeResponse) => {
-        	console.log(partCodeResponse);
+        this.partService.searchPartCode(JSON.stringify(partCode)).subscribe((response) => {
+        	this.partCodeResponse.partName=response.partName;
+        	this.partCodeResponse.partCode=response.partCode;
+        	console.log(this.partCodeResponse);
         });
     }
     downloadPartAttachment(partName) {
@@ -139,13 +145,18 @@ export class HomeComponent implements OnInit {
     }
 }
 
+export interface PartCodeResponse {
+	partName: string;
+	partCode: string;
+}
+
 export interface PartCode {
-      noOfHoles?: number;
-      mass?: number;
-      externalShapeType?: string;
-      externalShape?: string;
-      internalShapeType?: string;
-      internalShape?: string;    
-      dimensionalCharacteristicsType?: string; 
-	  dimensionalCharacteristic?: number;
+  noOfHoles?: number;
+  mass?: number;
+  externalShapeType?: string;
+  externalShape?: string;
+  internalShapeType?: string;
+  internalShape?: string;    
+  dimensionalCharacteristicsType?: string; 
+  dimensionalCharacteristic?: number;
 }

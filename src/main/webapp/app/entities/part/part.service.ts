@@ -52,7 +52,6 @@ export class PartService {
  		   'Content-Type': 'application/json'
      	});
     	let options = new RequestOptions({ headers: headers });
-    	console.log(body);
         return this.http.post(`${this.resourceUrl}/searchPartCode`, body, options).map((response: Response) => {
              return response.json();
         });
