@@ -142,27 +142,35 @@
 						</div>
 					</fieldset>
 					<div style="text-align: center;">
-						<button type="submit" (click)="searchPartCode(f.valid, f.value)"
+						<button type="submit" name="submitbtn" [disabled]="!f.valid"
+							(click)="searchPartCode(f.valid, f.value, f)"
 							class="btn btn-info">Get Part Code</button>
 					</div>
 					<br /> <br />
 					<div
-						style="text-align: center; margin-top: 20px; border: 2px solid black;"
+						style="text-align: center; margin-top: 18px; border: 2px solid black;"
 						*ngIf="partCodeResponse?.partName">
 						<b>
 							<h2 style="text-align: center;">
 								You have got part code : <a
 									(click)="downloadPartAttachment(partCodeResponse?.partName)">
-									{{partCodeResponse?.partCode}}</a>
+									<b>{{partCodeResponse?.partCode}}</b>
+								</a>
 							</h2>
 						</b>
-						<!-- <button type="submit"
+					</div>
+					<div *ngIf="!partCodeResponse?.partName"
+						style="text-align: center; margin-top: 20px; border: 2px solid black;">
+						<h2 style="text-align: center;">You found nothing with the
+							given input</h2>
+					</div>
+
+					<!-- <button type="submit"
 							(click)="downloadPartAttachment(partCodeResponse?.partName)"
 							class="btn btn-info">
 							<span class="fa fa-download"></span>&nbsp;<span> Click
 								Here</span>
 						</button> -->
-					</div>
 				</form>
 				<!-- <div style="margin-top: 20px" *ngIf="f">
 					<div>Form details:-</div>
