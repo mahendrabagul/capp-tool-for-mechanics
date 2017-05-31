@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class DocsComponent
 {
-	private static final String	DOCS_FOLDER_NAME	= "src/main/resources/variant_capp_tool_docs/";
+	private static final String	DOCS_FOLDER_NAME	= "c:/variant_capp_tool_docs/";
 	private static final String	FILE_EXTENSION		= ".docx";
 	private static Set<String>	allDocs				= getDocs();
 

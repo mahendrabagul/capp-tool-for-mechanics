@@ -9,7 +9,7 @@ import { VariantCappToolHomeModule } from './home/home.module';
 import { VariantCappToolAdminModule } from './admin/admin.module';
 import { VariantCappToolAccountModule } from './account/account.module';
 import { VariantCappToolEntityModule } from './entities/entity.module';
-
+// import { FileDropDirective, FileSelectDirective } from 'ng2-file-upload';
 import { customHttpProvider } from './blocks/interceptor/http.provider';
 import { PaginationConfig } from './blocks/config/uib-pagination.config';
 
@@ -42,7 +42,9 @@ import {
         ErrorComponent,
         PageRibbonComponent,
         ActiveMenuDirective,
-        FooterComponent
+        FooterComponent,
+		// FileSelectDirective,
+		// FileDropDirective
     ],
     providers: [
         ProfileService,

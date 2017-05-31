@@ -1,67 +1,86 @@
-<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+<form name="editForm" role="form" novalidate (ngSubmit)="save()"
+	#editForm="ngForm">
 
-    <div class="modal-header">
-        <h4 class="modal-title" id="myPartLabel" jhiTranslate="variantCappToolApp.part.home.createOrEditLabel">Create or edit a Part</h4>
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
-                (click)="clear()">&times;</button>
-    </div>
-    <div class="modal-body">
-        <jhi-alert-error></jhi-alert-error>
-        <div class="form-group" [hidden]="!part.id">
-            <label for="id" jhiTranslate="global.field.id">ID</label>
-            <input type="text" class="form-control" id="id" name="id"
-                   [(ngModel)]="part.id" readonly />
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="variantCappToolApp.part.partName" for="field_partName">Part Name</label>
-            <input type="text" class="form-control" name="partName" id="field_partName"
-                [(ngModel)]="part.partName"
-             />
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="variantCappToolApp.part.partLengthDimension" for="field_partLengthDimension">Part Length Dimension</label>
-            <input type="number" class="form-control" name="partLengthDimension" id="field_partLengthDimension"
-                [(ngModel)]="part.partLengthDimension"
-             />
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="variantCappToolApp.part.partHeightWidthDiameter" for="field_partHeightWidthDiameter">Part Height Width Diameter</label>
-            <input type="number" class="form-control" name="partHeightWidthDiameter" id="field_partHeightWidthDiameter"
-                [(ngModel)]="part.partHeightWidthDiameter"
-             />
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="variantCappToolApp.part.ratioLD" for="field_ratioLD">Ratio LD</label>
-            <input type="number" class="form-control" name="ratioLD" id="field_ratioLD"
-                [(ngModel)]="part.ratioLD"
-             />
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="variantCappToolApp.part.noOfHoles" for="field_noOfHoles">No Of Holes</label>
-            <input type="number" class="form-control" name="noOfHoles" id="field_noOfHoles"
-                [(ngModel)]="part.noOfHoles"
-             />
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="variantCappToolApp.part.mass" for="field_mass">Mass</label>
-            <input type="number" class="form-control" name="mass" id="field_mass"
-                [(ngModel)]="part.mass"
-             />
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="variantCappToolApp.part.partCode" for="field_partCode">Part Code</label>
-            <input type="text" class="form-control" name="partCode" id="field_partCode"
-                [(ngModel)]="part.partCode"
-             />
-        </div>
-
-    </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="clear()">
-            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
-        </button>
-        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
-            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
-        </button>
-    </div>
+	<div class="modal-header">
+		<h4 class="modal-title" id="myPartLabel"
+			jhiTranslate="variantCappToolApp.part.home.createOrEditLabel">Create
+			or edit a Part</h4>
+		<button type="button" class="close" data-dismiss="modal"
+			aria-hidden="true" (click)="clear()">&times;</button>
+	</div>
+	<div class="modal-body">
+		<jhi-alert-error></jhi-alert-error>
+		<div class="form-group" [hidden]="!part.id">
+			<label for="id" jhiTranslate="global.field.id">ID</label> <input
+				type="text" class="form-control" id="id" name="id"
+				[(ngModel)]="part.id" readonly />
+		</div>
+		<div class="form-group">
+			<label class="form-control-label"
+				jhiTranslate="variantCappToolApp.part.partName" for="field_partName">Part
+				Name</label> <input type="text" class="form-control" name="partName"
+				id="field_partName" [(ngModel)]="part.partName" />
+		</div>
+		<div class="form-group">
+			<label class="form-control-label"
+				jhiTranslate="variantCappToolApp.part.partLengthDimension"
+				for="field_partLengthDimension">Part Length Dimension</label> <input
+				type="number" class="form-control" name="partLengthDimension"
+				id="field_partLengthDimension"
+				[(ngModel)]="part.partLengthDimension" />
+		</div>
+		<div class="form-group">
+			<label class="form-control-label"
+				jhiTranslate="variantCappToolApp.part.partHeightWidthDiameter"
+				for="field_partHeightWidthDiameter">Part Height Width
+				Diameter</label> <input type="number" class="form-control"
+				name="partHeightWidthDiameter" id="field_partHeightWidthDiameter"
+				[(ngModel)]="part.partHeightWidthDiameter" />
+		</div>
+		<div class="form-group">
+			<label class="form-control-label"
+				jhiTranslate="variantCappToolApp.part.ratioLD" for="field_ratioLD">Ratio
+				LD</label> <input type="number" class="form-control" name="ratioLD"
+				id="field_ratioLD" [(ngModel)]="part.ratioLD" />
+		</div>
+		<div class="form-group">
+			<label class="form-control-label"
+				jhiTranslate="variantCappToolApp.part.noOfHoles"
+				for="field_noOfHoles">No Of Holes</label> <input type="number"
+				class="form-control" name="noOfHoles" id="field_noOfHoles"
+				[(ngModel)]="part.noOfHoles" />
+		</div>
+		<div class="form-group">
+			<label class="form-control-label"
+				jhiTranslate="variantCappToolApp.part.mass" for="field_mass">Mass</label>
+			<input type="number" class="form-control" name="mass" id="field_mass"
+				[(ngModel)]="part.mass" />
+		</div>
+		<div class="form-group">
+			<label class="form-control-label"
+				jhiTranslate="variantCappToolApp.part.partCode" for="field_partCode">Part
+				Code</label> <input type="text" class="form-control" name="partCode"
+				id="field_partCode" [(ngModel)]="part.partCode" />
+		</div>
+		<!-- <div class="form-group">
+			<input type="file" class="form-control" name="photo" id="field_uploadLoadDoc" ng2FileSelect
+				[uploader]="uploader" />
+			<button type="button" class="btn btn-success btn-s"
+				(click)="uploader.uploadAll()"
+				[disabled]="!uploader.getNotUploadedItems().length">Upload
+			</button>
+		</div> -->
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-default" data-dismiss="modal"
+			(click)="clear()">
+			<span class="fa fa-ban"></span>&nbsp;<span
+				jhiTranslate="entity.action.cancel">Cancel</span>
+		</button>
+		<button type="submit" [disabled]="editForm.form.invalid || isSaving"
+			class="btn btn-primary">
+			<span class="fa fa-save"></span>&nbsp;<span
+				jhiTranslate="entity.action.save">Save</span>
+		</button>
+	</div>
 </form>

@@ -1,7 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Response } from '@angular/http';
-
+// import the file uploader plugin
+// import { FileUploader } from 'ng2-file-upload/ng2-file-upload';
+// const URL = 'http://localhost:5454/api/upload/multi';
 import { Observable } from 'rxjs/Rx';
 import { NgbActiveModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { EventManager, AlertService } from 'ng-jhipster';
@@ -20,6 +22,9 @@ export class PartDialogComponent implements OnInit {
     authorities: any[];
     isSaving: boolean;
 
+	// public uploader:FileUploader = new FileUploader({url: URL, itemAlias:
+	// 'files'});
+	
     constructor(
         public activeModal: NgbActiveModal,
         private alertService: AlertService,
@@ -31,6 +36,13 @@ export class PartDialogComponent implements OnInit {
     ngOnInit() {
         this.isSaving = false;
         this.authorities = ['ROLE_USER', 'ROLE_ADMIN'];
+
+		// this.uploader.onAfterAddingFile = (file)=> { file.withCredentials =
+		// false; };
+		// this.uploader.onCompleteItem = (item:any, response:any, status:any,
+		// headers:any) => {
+		// console.log("ImageUpload:uploaded:", item, status, response);
+		// };
     }
     clear() {
         this.activeModal.dismiss('cancel');
